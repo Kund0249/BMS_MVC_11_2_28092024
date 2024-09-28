@@ -1,0 +1,50 @@
+﻿@model BMS_MVC_11_2_28092024.Models.CategoryModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <form>
+        <div>
+            <table>
+
+                <tr>
+                    <th>Category Name : </th>
+                    <td>
+                        @*<input type="text" name="Name" />*@
+                        @*@Html.TextBox("Name")*@
+                        @Html.TextBoxFor(x => x.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Category Desc : </th>
+                    <td>
+                        @*<input type="text" name="Description" />*@
+                        @*@Html.TextBox("Description")*@
+                        @Html.TextBoxFor(x => x.Description)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Book Price : </th>
+                    <td>
+
+                        @Html.TextBoxFor(x => x.price)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Save" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
