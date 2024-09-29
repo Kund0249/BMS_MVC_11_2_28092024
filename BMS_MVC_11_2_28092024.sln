@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMS_MVC_11_2_28092024", "BMS_MVC_11_2_28092024\BMS_MVC_11_2_28092024.csproj", "{4C8B83FC-C698-47CB-89DF-C6946E9CE762}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BMS_MVC.DataAccess", "BMS_MVC.DataAccess\BMS_MVC.DataAccess.csproj", "{EBE6E56D-D0F7-4678-B1E7-07406B00742A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4C8B83FC-C698-47CB-89DF-C6946E9CE762}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C8B83FC-C698-47CB-89DF-C6946E9CE762}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C8B83FC-C698-47CB-89DF-C6946E9CE762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBE6E56D-D0F7-4678-B1E7-07406B00742A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBE6E56D-D0F7-4678-B1E7-07406B00742A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBE6E56D-D0F7-4678-B1E7-07406B00742A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBE6E56D-D0F7-4678-B1E7-07406B00742A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

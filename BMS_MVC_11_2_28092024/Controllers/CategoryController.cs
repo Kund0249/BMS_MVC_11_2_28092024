@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BMS_MVC.DataAccess;
+using BMS_MVC.DataAccess.Repositories;
+using BMS_MVC.DataAccess.Entity;
 
 namespace BMS_MVC_11_2_28092024.Controllers
 {
@@ -11,7 +14,11 @@ namespace BMS_MVC_11_2_28092024.Controllers
     //Controller Class - Handle the http request and response
     public class CategoryController : Controller
     {
-
+        private CategoryRepository categoryRepository;
+        public CategoryController()
+        {
+            categoryRepository = new CategoryRepository();
+        }
         //Action method
         /*
             should be public
@@ -20,34 +27,55 @@ namespace BMS_MVC_11_2_28092024.Controllers
             can't overload like c# method
          */
 
-        //public string GetMessage()
-        //{
-        //    return "This is my first controller";
-        //}
-        //[HttpPost]
-        //public string GetMessage(int id)
-        //{
-        //    return "This is my first controller - " + id.ToString();
-        //}
+        [HttpGet]
+        public ViewResult Index()
+        {
+            List<CategoryEntity> list = categoryRepository.Get();
+            List<CategoryModel> data = new List<CategoryModel>();
+            if (list != null)
+            {
+                foreach (var item in list)
+                {
+                    data.Add(new CategoryModel()
+                    {
+                        Id = item.CategoryId,
+                        Name = item.Name,
+                        Description = item.Discription
+                    });
+                }
+            }
+
+            return View(data);
+        }
 
         [HttpGet]
         public ViewResult Create()
         {
+           
             return View();
         }
 
-        //[HttpGet]
+       
         [HttpPost]
-        public ViewResult Create(string txtCategoryName, string txtCategoryDesc)
+        public RedirectToRouteResult Create(CategoryModel model)
         {
-            return View();
+            CategoryEntity entity = new CategoryEntity()
+            {
+                Name = model.Name,
+                Discription = model.Description
+            };
+            //CategoryRepository repository = new CategoryRepository();
+            categoryRepository.Add(entity);
+
+            return RedirectToAction(nameof(Index));
         }
 
 
-        //[HttpGet]
-        //public ViewResult Create(CategoryModel model)
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        public RedirectToRouteResult Delete(int id)
+        {
+            categoryRepository.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
