@@ -1,0 +1,38 @@
+﻿@model BMS_MVC_11_2_28092024.Models.BookModel
+
+<div class="row">
+    <div class="col-md-6 offset-3 mt-5">
+       
+        @using (Html.BeginForm("Create", "Book", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data"}))
+        {
+            <table class="table">
+                <tr>
+                    <td>Book Title</td>
+                    <td>
+                        @Html.TextBoxFor(x => x.BookName, htmlAttributes: new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Book Title</td>
+                    <td>
+                        @Html.DropDownListFor(x => x.Category,Model.CategoryList, "Select Category", htmlAttributes: new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cover Photo</td>
+                    <td>
+                        <div class="input-group">
+                            @Html.TextBoxFor(x => x.CoverPhoto, htmlAttributes: new { @class = "form-control", type = "file" })
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+        }
+
+    </div>
+</div>

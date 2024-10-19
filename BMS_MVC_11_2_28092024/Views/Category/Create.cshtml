@@ -1,50 +1,38 @@
 ﻿@model BMS_MVC_11_2_28092024.Models.CategoryModel
-@{
-    Layout = null;
-}
+@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
-    <title>Create</title>
-</head>
-<body>
-    <form method="post">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-6 offset-3">
-                    <table class="table">
+<form method="post">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <table class="table">
 
-                        <tr>
-                            <th>Category Name : </th>
-                            <td>
-                                @*<input type="text" name="Name" />*@
-                                @*@Html.TextBox("Name")*@
-                                @Html.TextBoxFor(x => x.Name, new {@class = "form-control"})
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Category Desc : </th>
-                            <td>
-                                @*<input type="text" name="Description" />*@
-                                @*@Html.TextBox("Description")*@
-                                @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
-                            </td>
-                        </tr>
+                <tr>
+                    <th>Category Name : </th>
+                    <td>
+                        @*<input type="text" name="Name" />*@
+                        @*@Html.TextBox("Name")*@
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>Category Desc : </th>
+                    <td>
+                        @*<input type="text" name="Description" />*@
+                        @*@Html.TextBox("Description")*@
+                        @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+                    </td>
+                </tr>
 
-                        <tr>
-                            <td colspan="2">
-                                <input type="submit" value="Save" class="btn btn-primary" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
         </div>
-        
-    </form>
-</body>
-</html>
+    </div>
+</form>
+

@@ -1,20 +1,16 @@
 ﻿@model List<BMS_MVC_11_2_28092024.Models.CategoryModel>
-@{
-    Layout = null;
-}
+@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
-    <title>Index</title>
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
+    
+        <div class="row mt-5">
             <div class="col-8 offset-2">
+                <div class="row float-end">
+                    @Html.ActionLink("Add New", "create", "category", null ,new { @class = "btn btn-primary" })
+                 
+                </div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -66,6 +62,5 @@
                 </table>
             </div>
         </div>
-    </div>
-</body>
-</html>
+    
+
