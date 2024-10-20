@@ -15,13 +15,15 @@ namespace BMS_MVC_11_2_28092024.Controllers
         // GET: Book
 
         private CategoryRepository categoryRepository;
+        private BookRepository bookRepository;
         public BookController()
         {
             categoryRepository = new CategoryRepository();
+            bookRepository = new BookRepository();
         }
         public ActionResult Index()
         {
-           return View();
+           return View(bookRepository.GetAllBooks);
         }
 
 
@@ -49,8 +51,16 @@ namespace BMS_MVC_11_2_28092024.Controllers
                 string directory = "~/Resources/Image";
                 string filePath  = Path.Combine(Server.MapPath(directory), fileName);
                 model.CoverPhoto.SaveAs(filePath);
+
+                BookEntity bookEntity = new BookEntity()
+                {
+                    CoverPhotoPath = directory + "/" + fileName,
+                    Title = model.BookName
+                };
+
+                bookRepository.Save(bookEntity);
             }
-            return View();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
