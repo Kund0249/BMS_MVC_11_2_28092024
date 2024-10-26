@@ -7,6 +7,7 @@ using System.IO;
 using System.Web.Mvc;
 using BMS_MVC.DataAccess.Repositories;
 using BMS_MVC.DataAccess.Entity;
+using System.Web.UI.WebControls;
 
 namespace BMS_MVC_11_2_28092024.Controllers
 {
@@ -23,7 +24,7 @@ namespace BMS_MVC_11_2_28092024.Controllers
         }
         public ActionResult Index()
         {
-           return View(bookRepository.GetAllBooks);
+            return View(bookRepository.GetAllBooks);
         }
 
 
@@ -44,23 +45,33 @@ namespace BMS_MVC_11_2_28092024.Controllers
         [HttpPost]
         public ActionResult Create(BookModel model)
         {
-            if (model.CoverPhoto != null)
+            if (ModelState.IsValid)
             {
-                string ext = Path.GetExtension(model.CoverPhoto.FileName);
-                string fileName = DateTime.Now.ToString("ddmmyyyy-") + Guid.NewGuid().ToString()+ext;
-                string directory = "~/Resources/Image";
-                string filePath  = Path.Combine(Server.MapPath(directory), fileName);
-                model.CoverPhoto.SaveAs(filePath);
-
-                BookEntity bookEntity = new BookEntity()
+                if (model.CoverPhoto != null)
                 {
-                    CoverPhotoPath = directory + "/" + fileName,
-                    Title = model.BookName
-                };
+                    string ext = Path.GetExtension(model.CoverPhoto.FileName);
+                    string fileName = DateTime.Now.ToString("ddmmyyyy-") + Guid.NewGuid().ToString() + ext;
+                    string directory = "~/Resources/Image";
+                    string filePath = Path.Combine(Server.MapPath(directory), fileName);
+                    model.CoverPhoto.SaveAs(filePath);
 
-                bookRepository.Save(bookEntity);
+                    BookEntity bookEntity = new BookEntity()
+                    {
+                        CoverPhotoPath = directory + "/" + fileName,
+                        Title = model.BookName
+                    };
+
+                    bookRepository.Save(bookEntity);
+                }
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
+            model.CategoryList = categoryRepository.Get()
+                .Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.CategoryId.ToString()
+                }).ToList();
+            return View(model);
         }
     }
 }

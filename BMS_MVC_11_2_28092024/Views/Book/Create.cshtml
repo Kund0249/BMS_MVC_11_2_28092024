@@ -10,12 +10,14 @@
                     <td>Book Title</td>
                     <td>
                         @Html.TextBoxFor(x => x.BookName, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.BookName, "", htmlAttributes: new {@class = "text-danger"})
                     </td>
                 </tr>
                 <tr>
                     <td>Book Title</td>
                     <td>
-                        @Html.DropDownListFor(x => x.Category,Model.CategoryList, "Select Category", htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownListFor(x => x.Category, Model.CategoryList, "Select Category", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.Category, "", htmlAttributes: new { @class = "text-danger" })
                     </td>
                 </tr>
                 <tr>
@@ -23,6 +25,8 @@
                     <td>
                         <div class="input-group">
                             @Html.TextBoxFor(x => x.CoverPhoto, htmlAttributes: new { @class = "form-control", type = "file" })
+                            @Html.ValidationMessageFor(x => x.CoverPhoto, "", htmlAttributes: new { @class = "text-danger" })
+
                         </div>
                     </td>
                 </tr>

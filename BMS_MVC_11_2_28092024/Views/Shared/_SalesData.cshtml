@@ -1,0 +1,13 @@
+﻿@model IEnumerable<BMS_MVC_11_2_28092024.Models.SalesModel>
+
+<div class="col-4 bg-info" style="width : 300px">
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>@item.Year</th>
+                <td>@item.TotalSalaes</td>
+            </tr>
+        }
+    </table>
+</div>

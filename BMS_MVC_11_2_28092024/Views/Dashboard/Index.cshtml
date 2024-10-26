@@ -1,0 +1,22 @@
+﻿@{
+    List<BMS_MVC_11_2_28092024.Models.SalesModel> model = new List<BMS_MVC_11_2_28092024.Models.SalesModel>()
+{
+        new BMS_MVC_11_2_28092024.Models.SalesModel()
+        {
+            Year = "2023",TotalSalaes=57647876
+        },
+         new BMS_MVC_11_2_28092024.Models.SalesModel()
+         {
+             Year = "2024",TotalSalaes=4563527
+         },
+    };
+}
+
+<div class="row mb-3">
+    @Html.Partial("_SalesData", model)
+
+</div>
+
+<div class="row mb-3">
+    @Html.Partial("_SalesHistory")
+</div>
